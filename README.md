@@ -21,7 +21,7 @@ You can find the demo here:
 ## How to run this repo locally
 
 ```bash
-npm run serve
+yarn start
 ```
 
 ## How to create single-spa frontend app
