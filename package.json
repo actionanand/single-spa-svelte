@@ -1,5 +1,6 @@
 {
   "name": "@actionanand/single-spa-svelte",
+  "homepage": "http://actionanand.github.io/single-spa-svelte",
   "scripts": {
     "build": "concurrently yarn:build:*",
     "build:rollup": "rollup -c",
@@ -8,7 +9,9 @@
     "test": "jest",
     "prepare": "husky install",
     "format": "prettier --write --plugin-search-dir=. .",
-    "check-format": "prettier --plugin-search-dir=. --check ."
+    "check-format": "prettier --plugin-search-dir=. --check .",
+    "predeploy": "yarn run build:rollup",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -19,6 +22,7 @@
     "@testing-library/svelte": "^3.0.3",
     "babel-jest": "^27.0.6",
     "concurrently": "^6.2.1",
+    "gh-pages": "^4.0.0",
     "husky": "^7.0.2",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
