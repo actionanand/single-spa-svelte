@@ -13,6 +13,10 @@ export default {
     format: "system",
     name: null, // ensure anonymous System.register
     file: "dist/actionanand-single-spa-svelte.js",
+    // globals: {
+    //   '@actionanand/utility': '@actionanand/utility',
+    //   'rxjs': 'rxjs'
+    // }
   },
   plugins: [
     svelte({
