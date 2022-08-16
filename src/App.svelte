@@ -1,28 +1,39 @@
 <script>
+  import { onDestroy } from 'svelte';
+
   import { debounceTime, take } from 'rxjs/operators';
 
   import { getData, state$ } from '@actionanand/utility';
 
   export let name;
 
-  let htmlContent = ''
+  let htmlContent = '';
   let paraNo;
+  const appTitle = 'Single-Spa Svelte';
+
+  document.title = appTitle;
 
   getData('/data').then((data) => {
       console.log('svelte ', data);
     });
 
-    state$.pipe(debounceTime(0), take(1)).subscribe(async (resp) => {
-      console.log('svelte ', resp);
-      htmlContent = resp.data?.htmlPara;
-      paraNo = resp.data?.paraNo;
-    });
+  const utilSub = state$.pipe(debounceTime(0), take(1)).subscribe(async (resp) => {
+    console.log('svelte ', resp);
+    htmlContent = resp.data?.htmlPara;
+    paraNo = resp.data?.paraNo;
+  });
 
 	function handleClick(e) {
     e.preventDefault();
     const event = new CustomEvent('svelte', { detail: {paraNo} });
     window.dispatchEvent(event);
 	}
+
+  onDestroy(() => {
+    state$.next({data: ''});
+    // console.log(utilSub);
+    utilSub.unsubscribe();
+  });
 </script>
 
 <style scoped>
