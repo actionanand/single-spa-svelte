@@ -5,6 +5,8 @@
 
   import { getData, state$ } from '@actionanand/utility';
 
+  import HobbyRoot from './components/HobbyRoot.svelte';
+
   export let name;
 
   let htmlContent = '';
@@ -87,6 +89,7 @@
     <section>Content from Vanilla JS page</section>
 
     <form class="content">
+      <!-- svelte-ignore a11y-label-has-associated-control -->
       <label>Paragraphs:</label>
       <input type="number" bind:value={paraNo} />
       <button on:click={handleClick} class="btn">Change</button>
@@ -95,6 +98,7 @@
       {@html htmlContent}
     </div>
   {:else}
-  <section> <span class="title-span"> {name} </span> &nbsp; has been mounted successfully!</section>
+    <!-- <section> <span class="title-span"> {name} </span> &nbsp; has been mounted successfully!</section> -->
+    <HobbyRoot></HobbyRoot>
   {/if}
 </div>

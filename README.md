@@ -66,3 +66,6 @@ Each repo can be set up with [Travis CI](https://travis-ci.org/) for running job
 - [How to deploy a React, Angular and Vue project to Github pages](https://deepinder.me/how-to-deploy-a-react-angular-vue-project-to-github-pages)
 - [Micro frontends: Cross-application communication with Single-Spa and RxJS.](https://obaranovskyi.medium.com/micro-frontends-cross-application-communication-with-single-spa-and-rxjs-aa55084bf344)
 - [Implementing Micro Frontends Using Single SPA](https://betterprogramming.pub/implementing-micro-frontends-using-single-spa-1ac2a3f704a2)
+- [Svelte App with bugfender](https://bugfender.com/blog/create-your-first-svelte-app/)
+- ['svelte-feather-icons' npm lib](https://www.npmjs.com/package/svelte-feather-icons)
+- [Vue feather icons list](https://vue-feather-icons.egoist.sh/)
