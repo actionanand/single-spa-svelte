@@ -24,7 +24,6 @@
     console.log('svelte ', resp);
     htmlContent = resp.data?.htmlPara;
     paraNo = resp.data?.paraNo;
-    oldParaNo = paraNo;
   });
 
 	function handleClick(e) {
