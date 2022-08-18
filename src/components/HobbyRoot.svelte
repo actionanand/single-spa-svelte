@@ -149,9 +149,9 @@
 			</div>
 		</div>
 	</div>
-	<footer>
+	<!-- <footer>
 		<p> Made with ❤️ by Anand Raja </p>
-	</footer>
+	</footer> -->
 </main>
 
 <style>
@@ -162,7 +162,7 @@
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: green;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
@@ -175,7 +175,24 @@
 
 	textarea { 
 		width: 100%;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-padding: 0.4em 0;
+    padding: 0.4em;
+    margin: 0 0 0.5em 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
 	}
+
+  label {
+    display: block;
+    color: #333;
+    text-align: center;
+    /* padding: 1rem; */
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  }
 
 	.container {
 		display: flex;
@@ -184,16 +201,16 @@
 	}
 
 	@media screen and (max-width: 720px) {
-		.container {
-			flex-direction: column;
-		}
+  .container {
+    flex-direction: column;
+  }
 	}
 
 	.hobby-form {
 		padding: 1rem;
 		background-color: #ebebeb;
 		max-height: 381px;
-    	min-width: 320px;
+    min-width: 320px;
 	}
 	.hobby-list {
 		display: flex;
@@ -206,9 +223,9 @@
 
 	.no-hobby {
 		padding: 1em;
-    	border: 1px solid;
-    	border-radius: 4px;
-    	background-color: #ebebeb;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: #ebebeb;
 	}
 
 	.weight-div {
@@ -220,22 +237,51 @@
 	}
 
 	.weight-div p {
-		width: 2rem;
-		height: 2rem;
-		border: 1px solid #000;
+		width: 4rem;
+		height: 4rem;
+		border: 1px solid #333;
 		border-radius: 35px;
 		padding: 1rem;
 		font-size: 1.5rem;
 	}
 
+  input {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0.4rem;
+    margin: 0 0 0.5rem 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+  }
+
+  input:disabled {
+    color: #ccc;
+  }
+
 	input[type="range"] {
 		padding: 0;
 		margin-top: 0.4em;
 		width: 100%;
+    cursor: pointer;
 	}
 	input[type="text"] {
 		width: 100%;
 	}
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: 1px solid green;
+    -webkit-box-shadow: 0 0 5px green;
+    box-shadow: 0 0 5px green;
+  }
+
+  input[type="range"]:focus {
+    border-color: unset;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+  }
+
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
