@@ -5,10 +5,13 @@
 
   import { getData, state$ } from '@actionanand/utility';
 
+  import HobbyRoot from './components/HobbyRoot.svelte';
+
   export let name;
 
   let htmlContent = '';
   let paraNo;
+  let isResetHtmlContent = false;
   const appTitle = 'Single-Spa Svelte';
 
   document.title = appTitle;
@@ -21,16 +24,20 @@
     console.log('svelte ', resp);
     htmlContent = resp.data?.htmlPara;
     paraNo = resp.data?.paraNo;
+    oldParaNo = paraNo;
   });
 
 	function handleClick(e) {
     e.preventDefault();
+    isResetHtmlContent = true;
     const event = new CustomEvent('svelte', { detail: {paraNo} });
     window.dispatchEvent(event);
 	}
 
   onDestroy(() => {
-    state$.next({data: ''});
+    if (!isResetHtmlContent) {
+      state$.next({data: ''});
+    }
     // console.log(utilSub);
     utilSub.unsubscribe();
   });
@@ -51,8 +58,9 @@
   .svelte-container{
     margin: 1rem 2rem;
     min-height: 70vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: #333;
   }
-
   .content {
     display: grid;
     max-width: 300px;
@@ -62,39 +70,76 @@
 
   .content button {
   text-transform: uppercase;
-  background: #49a6e9;
-  color: hsl(205, 86%, 17%);
+  background: green;
+  color: rgb(4, 46, 4);
   padding: 0.375rem 0.75rem;
   letter-spacing: 1px;
   display: inline-block;
   transition: all 0.3s linear;
   font-size: 0.875rem;
-  border: 2px solid #49a6e9;
+  border: 2px solid green;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
 }
 
 .content button:hover {
-  color: #49a6e9;
-  background: hsl(205, 86%, 81%);
-  border-color: hsl(205, 86%, 81%);
+  color: white;
+  background: rgb(2, 80, 2);
+  border-color: rgb(2, 80, 2);
+}
+
+.svelte-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: green;
+}
+
+.content label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content input {
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  margin: 0 0.5rem;
+  padding: 0.25rem 0.5rem;
+  width: 4rem;
+}
+
+.content input:focus {
+  outline: none;
+  border-color: 1px solid green;
+  -webkit-box-shadow: 0 0 5px green;
+  box-shadow: 0 0 5px green;
+}
+
+.html-wrap {
+  font-family: cursive;
+  font-style: italic;
+  color: green;
+  text-align: justify;
 }
 </style>
 
 <div class="svelte-container">
   {#if htmlContent}
-    <section>Content from Vanilla JS page</section>
+    <section class="svelte-title">Content from Vanilla JS page</section>
 
     <form class="content">
+      <!-- svelte-ignore a11y-label-has-associated-control -->
       <label>Paragraphs:</label>
       <input type="number" bind:value={paraNo} />
       <button on:click={handleClick} class="btn">Change</button>
     </form>
-    <div>
+    <div class="html-wrap">
       {@html htmlContent}
     </div>
   {:else}
-  <section> <span class="title-span"> {name} </span> &nbsp; has been mounted successfully!</section>
+    <!-- <section> <span class="title-span"> {name} </span> &nbsp; has been mounted successfully!</section> -->
+    <HobbyRoot></HobbyRoot>
   {/if}
 </div>
